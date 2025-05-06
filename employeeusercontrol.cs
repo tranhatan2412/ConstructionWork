@@ -18,6 +18,7 @@ namespace ConstructionWork
         private Button btnRefreshEmployee;
         private DataGridView dgvEmployees;
         private Label lblEmployeeMessage;
+        private ToolTip toolTip;
         private System.ComponentModel.IContainer components = null;
 
         public EmployeeUserControl()
@@ -47,6 +48,7 @@ namespace ConstructionWork
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            toolTip = new ToolTip(components);
             lblEmployeeName = new Label();
             txtEmployeeName = new TextBox();
             lblPosition = new Label();

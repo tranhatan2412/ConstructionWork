@@ -1,21 +1,28 @@
 using System;
 using System.Windows.Forms;
-using System.Threading;
+using ConstructionWork.Helpers;
 
 namespace ConstructionWork
 {
-    internal static class Program
+    static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            Application.Run(new MainForm());
+            Application.SetHighDpiMode(HighDpiMode.SystemAware);
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            
+            // Khởi tạo database trước khi chạy form chính
+            if (DatabaseHelper.InitializeDatabase())
+            {
+                Application.Run(new MainForm());
+            }
+            else
+            {
+                MessageBox.Show("Không thể khởi tạo database. Ứng dụng sẽ đóng.", "Lỗi", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

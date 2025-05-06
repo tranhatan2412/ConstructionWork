@@ -1,39 +1,42 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using Microsoft.Data.SqlClient;
+using ConstructionWork.Helpers;
 
 namespace ConstructionWork
 {
     public partial class ConstructionUserControl : UserControl
     {
-        private Label lblName;
+        private Label ?lblName;
         private TextBox txtName;
-        private Label lblYear;
+        private Label ?lblYear;
         private TextBox txtYear;
-        private Label lblLocation;
+        private Label ?lblLocation;
         private TextBox txtLocation;
         private Button btnAdd;
         private Button btnEdit;
         private Button btnDelete;
         private Button btnRefresh;
         private Button btnExport;
-        private Panel panelFilter;
+        private Panel ?panelFilter;
         private DataGridView dgvConstruction;
         private Label lblMessage;
         private TextBox txtFilterName;
         private TextBox txtFilterYear;
         private TextBox txtFilterLocation;
         private PictureBox pictureBoxRemoveFilter;
-        private ToolTip toolTip;
-        private DataGridViewTextBoxColumn dataGridViewColumnSTT;
-        private DataGridViewTextBoxColumn dataGridViewColumnName;
-        private DataGridViewTextBoxColumn dataGridViewColumnYear;
-        private DataGridViewTextBoxColumn dataGridViewColumnPlace;
-        private System.ComponentModel.IContainer components = null;
+        private ToolTip ?toolTip;
+        private DataGridViewTextBoxColumn ?dataGridViewColumnSTT;
+        private DataGridViewTextBoxColumn ?dataGridViewColumnName;
+        private DataGridViewTextBoxColumn ?dataGridViewColumnYear;
+        private DataGridViewTextBoxColumn ?dataGridViewColumnPlace;
+        private System.ComponentModel.IContainer? components;
 
         public ConstructionUserControl()
         {
             InitializeComponent();
+            Event(); // Gọi hàm khởi tạo sự kiện   
         }
 
         /// <summary>
@@ -99,9 +102,7 @@ namespace ConstructionWork
             lblMessage.Location = new Point(669, 180);
             lblMessage.Margin = new Padding(4, 0, 4, 0);
             lblMessage.Name = "lblMessage";
-            lblMessage.Size = new Size(309, 26);
-            lblMessage.TabIndex = 0;
-            lblMessage.Text = "Đã thêm công trình thành công!";
+            lblMessage.Size = new Size(0, 26);
             lblMessage.TextAlign = ContentAlignment.MiddleRight;
             // 
             // btnExport
@@ -111,7 +112,7 @@ namespace ConstructionWork
             btnExport.Margin = new Padding(4, 5, 4, 5);
             btnExport.Name = "btnExport";
             btnExport.Size = new Size(151, 36);
-            btnExport.TabIndex = 1;
+            btnExport.TabIndex = 11;
             btnExport.Text = "Xuất Excel";
             // 
             // btnDelete
@@ -120,7 +121,7 @@ namespace ConstructionWork
             btnDelete.Margin = new Padding(4, 5, 4, 5);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(120, 36);
-            btnDelete.TabIndex = 2;
+            btnDelete.TabIndex = 5;
             btnDelete.Text = "Xóa";
             // 
             // btnEdit
@@ -129,7 +130,7 @@ namespace ConstructionWork
             btnEdit.Margin = new Padding(4, 5, 4, 5);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(120, 36);
-            btnEdit.TabIndex = 3;
+            btnEdit.TabIndex = 4;
             btnEdit.Text = "Sửa";
             // 
             // btnAdd
@@ -137,7 +138,7 @@ namespace ConstructionWork
             btnAdd.Location = new Point(32, 175);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(120, 36);
-            btnAdd.TabIndex = 4;
+            btnAdd.TabIndex = 3;
             btnAdd.Text = "Thêm";
             // 
             // txtLocation
@@ -146,7 +147,7 @@ namespace ConstructionWork
             txtLocation.Margin = new Padding(4, 5, 4, 5);
             txtLocation.Name = "txtLocation";
             txtLocation.Size = new Size(448, 33);
-            txtLocation.TabIndex = 5;
+            txtLocation.TabIndex = 1;
             // 
             // lblLocation
             // 
@@ -155,7 +156,6 @@ namespace ConstructionWork
             lblLocation.Margin = new Padding(4, 0, 4, 0);
             lblLocation.Name = "lblLocation";
             lblLocation.Size = new Size(103, 26);
-            lblLocation.TabIndex = 6;
             lblLocation.Text = "Địa điểm:";
             // 
             // txtYear
@@ -164,7 +164,7 @@ namespace ConstructionWork
             txtYear.Margin = new Padding(4, 5, 4, 5);
             txtYear.Name = "txtYear";
             txtYear.Size = new Size(223, 33);
-            txtYear.TabIndex = 7;
+            txtYear.TabIndex = 2;
             // 
             // lblYear
             // 
@@ -173,7 +173,6 @@ namespace ConstructionWork
             lblYear.Margin = new Padding(4, 0, 4, 0);
             lblYear.Name = "lblYear";
             lblYear.Size = new Size(154, 26);
-            lblYear.TabIndex = 8;
             lblYear.Text = "Năm thực hiện:";
             // 
             // txtName
@@ -182,7 +181,7 @@ namespace ConstructionWork
             txtName.Margin = new Padding(4, 5, 4, 5);
             txtName.Name = "txtName";
             txtName.Size = new Size(448, 33);
-            txtName.TabIndex = 9;
+            txtName.TabIndex = 0;
             // 
             // lblName
             // 
@@ -191,7 +190,6 @@ namespace ConstructionWork
             lblName.Margin = new Padding(4, 0, 4, 0);
             lblName.Name = "lblName";
             lblName.Size = new Size(155, 26);
-            lblName.TabIndex = 10;
             lblName.Text = "Tên công trình:";
             // 
             // dgvConstruction
@@ -199,23 +197,17 @@ namespace ConstructionWork
             dgvConstruction.AllowUserToAddRows = false;
             dgvConstruction.AllowUserToDeleteRows = false;
             dgvConstruction.AllowUserToOrderColumns = true;
+            dgvConstruction.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvConstruction.BackgroundColor = Color.White;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Times New Roman", 13.2000008F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = Color.Yellow;
-            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dgvConstruction.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvConstruction.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvConstruction.Columns.AddRange(new DataGridViewColumn[] { dataGridViewColumnSTT, dataGridViewColumnName, dataGridViewColumnYear, dataGridViewColumnPlace });
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = SystemColors.Window;
             dataGridViewCellStyle6.Font = new Font("Times New Roman", 13.2000008F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = Color.Yellow;
-            dataGridViewCellStyle6.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
             dgvConstruction.DefaultCellStyle = dataGridViewCellStyle6;
             dgvConstruction.Location = new Point(31, 275);
@@ -223,13 +215,7 @@ namespace ConstructionWork
             dgvConstruction.Name = "dgvConstruction";
             dgvConstruction.ReadOnly = true;
             dgvConstruction.RowHeadersWidth = 51;
-            dgvConstruction.RowTemplate.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvConstruction.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
-            dgvConstruction.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.Yellow;
-            dgvConstruction.RowTemplate.DefaultCellStyle.SelectionForeColor = Color.Black;
-            dgvConstruction.RowTemplate.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgvConstruction.Size = new Size(1163, 449);
-            dgvConstruction.TabIndex = 0;
             // 
             // btnRefresh
             // 
@@ -238,11 +224,10 @@ namespace ConstructionWork
             btnRefresh.Margin = new Padding(4, 5, 4, 5);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.Size = new Size(120, 36);
-            btnRefresh.TabIndex = 14;
+            btnRefresh.TabIndex = 6;
             btnRefresh.Text = "Làm mới";
             toolTip.SetToolTip(btnRefresh, "Xóa tất cả các ô nhập dữ liệu");
             btnRefresh.UseVisualStyleBackColor = true;
-            btnRefresh.Click += btnRefresh_Click;
             // 
             // panelFilter
             // 
@@ -255,7 +240,6 @@ namespace ConstructionWork
             panelFilter.Location = new Point(31, 230);
             panelFilter.Name = "panelFilter";
             panelFilter.Size = new Size(1163, 45);
-            panelFilter.TabIndex = 15;
             // 
             // txtFilterName
             // 
@@ -264,25 +248,25 @@ namespace ConstructionWork
             txtFilterName.Name = "txtFilterName";
             txtFilterName.PlaceholderText = "Tìm theo tên công trình...";
             txtFilterName.Size = new Size(457, 33);
-            txtFilterName.TabIndex = 0;
+            txtFilterName.TabIndex = 7;
             // 
             // txtFilterYear
             // 
             txtFilterYear.Font = new Font("Times New Roman", 13.2000008F);
             txtFilterYear.Location = new Point(457, 5);
             txtFilterYear.Name = "txtFilterYear";
-            txtFilterYear.PlaceholderText = "Tìm theo năm...";
+            txtFilterYear.PlaceholderText = "Tìm theo địa điểm...";
             txtFilterYear.Size = new Size(350, 33);
-            txtFilterYear.TabIndex = 1;
+            txtFilterYear.TabIndex = 8;
             // 
             // txtFilterLocation
             // 
             txtFilterLocation.Font = new Font("Times New Roman", 13.2000008F);
             txtFilterLocation.Location = new Point(807, 5);
             txtFilterLocation.Name = "txtFilterLocation";
-            txtFilterLocation.PlaceholderText = "Tìm theo địa điểm...";
+            txtFilterLocation.PlaceholderText = "Tìm theo năm...";
             txtFilterLocation.Size = new Size(310, 33);
-            txtFilterLocation.TabIndex = 2;
+            txtFilterLocation.TabIndex = 9;
             // 
             // pictureBoxRemoveFilter
             // 
@@ -293,18 +277,14 @@ namespace ConstructionWork
             pictureBoxRemoveFilter.Name = "pictureBoxRemoveFilter";
             pictureBoxRemoveFilter.Size = new Size(33, 31);
             pictureBoxRemoveFilter.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBoxRemoveFilter.TabIndex = 3;
+            pictureBoxRemoveFilter.TabIndex = 10;
             pictureBoxRemoveFilter.TabStop = false;
             toolTip.SetToolTip(pictureBoxRemoveFilter, "Xóa tất cả bộ lọc");
-            pictureBoxRemoveFilter.Click += pictureBoxRemoveFilter_Click;
             // 
             // dataGridViewColumnSTT
             // 
             dataGridViewColumnSTT.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.ForeColor = Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = Color.Yellow;
-            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
             dataGridViewColumnSTT.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewColumnSTT.HeaderText = "STT";
             dataGridViewColumnSTT.MinimumWidth = 6;
@@ -315,10 +295,6 @@ namespace ConstructionWork
             // dataGridViewColumnName
             // 
             dataGridViewColumnName.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.ForeColor = Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = Color.Yellow;
-            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             dataGridViewColumnName.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewColumnName.HeaderText = "Tên công trình";
@@ -330,32 +306,24 @@ namespace ConstructionWork
             // dataGridViewColumnYear
             // 
             dataGridViewColumnYear.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.ForeColor = Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = Color.Yellow;
-            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
             dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
             dataGridViewColumnYear.DefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewColumnYear.HeaderText = "Năm thực hiện";
+            dataGridViewColumnYear.HeaderText = "Địa điểm";
             dataGridViewColumnYear.MinimumWidth = 6;
             dataGridViewColumnYear.Name = "dataGridViewColumnYear";
             dataGridViewColumnYear.ReadOnly = true;
-            dataGridViewColumnYear.Width = 177;
+            dataGridViewColumnYear.Width = 126;
             // 
             // dataGridViewColumnPlace
             // 
             dataGridViewColumnPlace.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.ForeColor = Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = Color.Yellow;
-            dataGridViewCellStyle5.SelectionForeColor = Color.Black;
             dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
             dataGridViewColumnPlace.DefaultCellStyle = dataGridViewCellStyle5;
-            dataGridViewColumnPlace.HeaderText = "Địa điểm";
+            dataGridViewColumnPlace.HeaderText = "Năm thực hiện";
             dataGridViewColumnPlace.MinimumWidth = 6;
             dataGridViewColumnPlace.Name = "dataGridViewColumnPlace";
             dataGridViewColumnPlace.ReadOnly = true;
-            dataGridViewColumnPlace.Width = 126;
+            dataGridViewColumnPlace.Width = 177;
             // 
             // ConstructionUserControl
             // 
@@ -391,44 +359,175 @@ namespace ConstructionWork
 
         #region Event Handlers
 
-        private void pictureBoxRemoveFilter_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object ?sender, EventArgs e)
         {
-            // Xóa nội dung của tất cả các ô tìm kiếm
+            // Kiểm tra tên công trình không được bỏ trống
+            if (string.IsNullOrWhiteSpace(txtName.Text))
+            {
+                lblMessage.Text = "Vui lòng nhập tên công trình!";
+                lblMessage.ForeColor = Color.Red;
+                TimeIntervalMessage(5000);
+                txtName.Focus();
+                return;
+            }
+
+            // Kiểm tra địa điểm không được bỏ trống
+            if (string.IsNullOrWhiteSpace(txtLocation.Text))
+            {
+                lblMessage.Text = "Vui lòng nhập địa điểm!";
+                lblMessage.ForeColor = Color.Red;
+                TimeIntervalMessage(5000);
+                txtLocation.Focus();
+                return;
+            }
+
+            // Nếu tất cả đều hợp lệ, tiến hành thêm công trình
+            try
+            {
+                // Lấy kết nối từ DatabaseHelper
+                using SqlConnection connection = DatabaseHelper.GetConnection();
+                connection.Open();
+                string query = "insert into CongTrinh (Name, Location, Year) values (@Name, @Location, @Year)";
+
+                using SqlCommand command = new(query, connection);
+
+                command.Parameters.AddWithValue("@Name", txtName.Text);
+                command.Parameters.AddWithValue("@Location", txtLocation.Text);
+                command.Parameters.AddWithValue("@Year", string.IsNullOrEmpty(txtYear.Text) ? DBNull.Value : Convert.ToInt32(txtYear.Text));
+
+                command.ExecuteNonQuery();
+
+
+                // Hiển thị thông báo thành công
+                lblMessage.Text = "Đã thêm công trình thành công!";
+                lblMessage.ForeColor = Color.Green;
+                TimeIntervalMessage(5000);
+
+                // Làm mới các trường nhập liệu
+                txtName.Clear();
+                txtYear.Clear();
+                txtLocation.Clear();
+                this.ActiveControl = null;
+
+                // Làm mới datagridview
+                LoadConstructionData();
+            }
+            catch (Exception ex)
+            {
+                lblMessage.Text = $"Lỗi: {ex.Message}";
+                lblMessage.ForeColor = Color.Red;
+                TimeIntervalMessage(5000);
+            }
+        }
+        private void LoadConstructionData()
+        {
+            try
+            {
+                // Xóa dữ liệu cũ trong DataGridView
+                dgvConstruction.Rows.Clear();
+
+                using SqlConnection connection = DatabaseHelper.GetConnection();
+                connection.Open();
+                string query = "select Name, Location, Year from CongTrinh order by Name";
+
+                using SqlCommand command = new(query, connection);
+
+                using SqlDataReader reader = command.ExecuteReader();
+                int stt = 1;
+                while (reader.Read())
+                {
+                    string? year = reader["Year"] != DBNull.Value ? reader["Nam"].ToString() : "";
+
+                    dgvConstruction.Rows.Add(
+                        stt++,
+                        reader["Name"].ToString(),
+                        reader["Location"].ToString(),
+                        year
+                    );
+                }
+
+            }
+            catch (Exception ex)
+            {
+                lblMessage.Text = $"Lỗi khi tải dữ liệu: {ex.Message}";
+                lblMessage.ForeColor = Color.Red;
+                TimeIntervalMessage(5000);
+            }
+        }
+
+        private void TxtYear_KeyPress(object ?sender, KeyPressEventArgs e)
+        {
+            // Chỉ cho phép nhập số và phím điều khiển (như backspace)
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Ngăn ký tự được nhập vào
+
+                // Hiển thị thông báo
+                lblMessage.Text = "Vui lòng chỉ nhập số vào ô năm thực hiện!";
+                lblMessage.ForeColor = Color.Red;
+
+                // Tự động ẩn thông báo sau 3 giây
+                TimeIntervalMessage(5000);
+            }
+        }
+
+        // Xóa nội dung của tất cả các ô tìm kiếm
+        // Chuyển focus ra khỏi các ô tìm kiếm
+        private void pictureBoxRemoveFilter_Click(object ?sender, EventArgs e)
+        {
             txtFilterName.Clear();
             txtFilterYear.Clear();
             txtFilterLocation.Clear();
+            txtFilterName.Focus(); // Đặt focus vào ô tìm kiếm tên công trình
 
-            // Chuyển focus ra khỏi các ô tìm kiếm
-            this.ActiveControl = null;
-
-            // Có thể thêm code để làm mới datagridview nếu cần
         }
 
-        private void btnRefresh_Click(object sender, EventArgs e)
+        private void btnRefresh_Click(object ?sender, EventArgs e)
         {
             // Xóa nội dung của tất cả các ô nhập liệu
             txtName.Clear();
             txtYear.Clear();
             txtLocation.Clear();
 
-            // Chuyển focus ra khỏi các ô nhập liệu
-            this.ActiveControl = null;
+            txtName.Focus(); // Đặt focus vào ô nhập tên công trình
 
             // Hiển thị thông báo làm mới thành công (tùy chọn)
             lblMessage.Text = "Đã làm mới các trường dữ liệu!";
             lblMessage.ForeColor = Color.Green;
 
-            // Tự động ẩn thông báo sau 3 giây (tùy chọn)
-            System.Windows.Forms.Timer timer = new();
-            timer.Interval = 3000; // 3 giây
-            timer.Tick += (s, args) => {
-                lblMessage.Text = "";
-                timer.Stop();
-                timer.Dispose();
+            TimeIntervalMessage();
+        }
+
+        private void Event()
+        {
+            // Thêm sự kiện KeyPress cho ô nhập năm để chỉ cho phép nhập số
+            txtYear.KeyPress += TxtYear_KeyPress;
+            pictureBoxRemoveFilter.Click += pictureBoxRemoveFilter_Click;
+            btnRefresh.Click += btnRefresh_Click;
+            btnAdd.Click += btnAdd_Click;
+            Load += ConstructionUserControl_Load;
+
+        }
+        public void TimeIntervalMessage(short milisecond = 3000)
+        {
+            System.Windows.Forms.Timer timer = new()
+            {
+                Interval = milisecond,
             };
+            timer.Tick += (s, args) =>
+               {
+                   lblMessage.Text = "";
+                   timer.Stop();
+                   timer.Dispose();
+               };
             timer.Start();
         }
 
         #endregion
+
+        private void ConstructionUserControl_Load(object ?sender, EventArgs e)
+        {
+            LoadConstructionData();
+        }
     }
 }
