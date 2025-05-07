@@ -1,7 +1,4 @@
-using System;
 using System.Data;
-using System.Drawing;
-using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
 using ConstructionWork.Helpers;
 
@@ -32,7 +29,9 @@ namespace ConstructionWork
       private DataGridViewTextBoxColumn? dataGridViewColumnName;
       private DataGridViewTextBoxColumn? dataGridViewColumnYear;
       private DataGridViewTextBoxColumn? dataGridViewColumnLocation;
-      private System.ComponentModel.IContainer? components;
+      private DataGridViewTextBoxColumn? dataGridViewColumnID;
+      private DataGridViewCheckBoxColumn dataGridViewColumnCheckBox;
+      private System.ComponentModel.Container? components;
 
       public ConstructionUserControl()
       {
@@ -62,29 +61,31 @@ namespace ConstructionWork
       private void InitializeComponent()
       {
          components = new System.ComponentModel.Container();
-         lblMessage = new Label();
-         btnExport = new Button();
-         btnDelete = new Button();
-         btnEdit = new Button();
-         btnAdd = new Button();
-         txtLocation = new TextBox();
-         lblLocation = new Label();
-         txtYear = new TextBox();
-         lblYear = new Label();
-         txtName = new TextBox();
-         lblName = new Label();
-         dgvConstruction = new DataGridView();
-         btnRefresh = new Button();
-         panelFilter = new Panel();
-         txtFilterName = new TextBox();
-         txtFilterYear = new TextBox();
-         txtFilterLocation = new TextBox();
-         pictureBoxRemoveFilter = new PictureBox();
-         toolTip = new ToolTip(components);
-         dataGridViewColumnSTT = new DataGridViewTextBoxColumn();
-         dataGridViewColumnName = new DataGridViewTextBoxColumn();
-         dataGridViewColumnYear = new DataGridViewTextBoxColumn();
-         dataGridViewColumnLocation = new DataGridViewTextBoxColumn();
+         lblMessage = new();
+         btnExport = new();
+         btnDelete = new();
+         btnEdit = new();
+         btnAdd = new();
+         txtLocation = new();
+         lblLocation = new();
+         txtYear = new();
+         lblYear = new();
+         txtName = new();
+         lblName = new();
+         dgvConstruction = new();
+         btnRefresh = new();
+         panelFilter = new();
+         txtFilterName = new();
+         txtFilterYear = new();
+         txtFilterLocation = new();
+         pictureBoxRemoveFilter = new();
+         toolTip = new(components);
+         dataGridViewColumnSTT = new();
+         dataGridViewColumnName = new();
+         dataGridViewColumnYear = new();
+         dataGridViewColumnLocation = new();
+         dataGridViewColumnID = new();
+         dataGridViewColumnCheckBox = new();
          ((System.ComponentModel.ISupportInitialize)dgvConstruction).BeginInit();
          panelFilter.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)pictureBoxRemoveFilter).BeginInit();
@@ -94,107 +95,107 @@ namespace ConstructionWork
          // 
          lblMessage.AutoSize = true;
          lblMessage.ForeColor = Color.Green;
-         lblMessage.Location = new Point(669, 180);
-         lblMessage.Margin = new Padding(4, 0, 4, 0);
+         lblMessage.Location = new(669, 180);
+         lblMessage.Margin = new(4, 0, 4, 0);
          lblMessage.Name = "lblMessage";
-         lblMessage.Size = new Size(0, 26);
+         lblMessage.Size = new(0, 26);
          lblMessage.TextAlign = ContentAlignment.MiddleRight;
          // 
          // btnExport
          // 
          btnExport.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-         btnExport.Location = new Point(1043, 744);
-         btnExport.Margin = new Padding(4, 5, 4, 5);
+         btnExport.Location = new(1043, 744);
+         btnExport.Margin = new(4, 5, 4, 5);
          btnExport.Name = "btnExport";
-         btnExport.Size = new Size(151, 36);
+         btnExport.Size = new(151, 36);
          btnExport.TabIndex = 11;
          btnExport.Text = "Xuất Excel";
          // 
          // btnDelete
          // 
-         btnDelete.Location = new Point(352, 175);
-         btnDelete.Margin = new Padding(4, 5, 4, 5);
+         btnDelete.Location = new(352, 175);
+         btnDelete.Margin = new(4, 5, 4, 5);
          btnDelete.Name = "btnDelete";
-         btnDelete.Size = new Size(160, 36);
+         btnDelete.Size = new(160, 36);
          btnDelete.TabIndex = 5;
          btnDelete.Text = "Xóa";
          // 
          // btnEdit
          // 
-         btnEdit.Location = new Point(192, 175);
-         btnEdit.Margin = new Padding(4, 5, 4, 5);
+         btnEdit.Location = new(192, 175);
+         btnEdit.Margin = new(4, 5, 4, 5);
          btnEdit.Name = "btnEdit";
-         btnEdit.Size = new Size(160, 36);
+         btnEdit.Size = new(160, 36);
          btnEdit.TabIndex = 4;
          btnEdit.Text = "Sửa";
          // 
          // btnAdd
          // 
-         btnAdd.Location = new Point(32, 175);
+         btnAdd.Location = new(32, 175);
          btnAdd.Name = "btnAdd";
-         btnAdd.Size = new Size(160, 36);
+         btnAdd.Size = new(160, 36);
          btnAdd.TabIndex = 3;
          btnAdd.Text = "Thêm";
          // 
          // btnRefresh
          // 
-         btnRefresh.Location = new Point(513, 175);
-         btnRefresh.Margin = new Padding(4, 5, 4, 5);
+         btnRefresh.Location = new(513, 175);
+         btnRefresh.Margin = new(4, 5, 4, 5);
          btnRefresh.Name = "btnRefresh";
-         btnRefresh.Size = new Size(130, 36);
+         btnRefresh.Size = new(130, 36);
          btnRefresh.TabIndex = 6;
          btnRefresh.Text = "Làm mới";
          toolTip.SetToolTip(btnRefresh, "Xóa tất cả các ô nhập dữ liệu");
          // 
          // txtLocation
          // 
-         txtLocation.Location = new Point(195, 70);
-         txtLocation.Margin = new Padding(4, 5, 4, 5);
+         txtLocation.Location = new(195, 70);
+         txtLocation.Margin = new(4, 5, 4, 5);
          txtLocation.Name = "txtLocation";
-         txtLocation.Size = new Size(448, 33);
+         txtLocation.Size = new(448, 33);
          txtLocation.TabIndex = 1;
          // 
          // lblLocation
          // 
          lblLocation.AutoSize = true;
-         lblLocation.Location = new Point(31, 75);
-         lblLocation.Margin = new Padding(4, 0, 4, 0);
+         lblLocation.Location = new(31, 75);
+         lblLocation.Margin = new(4, 0, 4, 0);
          lblLocation.Name = "lblLocation";
-         lblLocation.Size = new Size(103, 26);
+         lblLocation.Size = new(103, 26);
          lblLocation.Text = "Địa điểm:";
          // 
          // txtYear
          // 
-         txtYear.Location = new Point(195, 120);
-         txtYear.Margin = new Padding(4, 5, 4, 5);
+         txtYear.Location = new(195, 120);
+         txtYear.Margin = new(4, 5, 4, 5);
          txtYear.Name = "txtYear";
-         txtYear.Size = new Size(223, 33);
+         txtYear.Size = new(223, 33);
          txtYear.TabIndex = 2;
          // 
          // lblYear
          // 
          lblYear.AutoSize = true;
-         lblYear.Location = new Point(31, 125);
-         lblYear.Margin = new Padding(4, 0, 4, 0);
+         lblYear.Location = new(31, 125);
+         lblYear.Margin = new(4, 0, 4, 0);
          lblYear.Name = "lblYear";
-         lblYear.Size = new Size(154, 26);
+         lblYear.Size = new(154, 26);
          lblYear.Text = "Năm thực hiện:";
          // 
          // txtName
          // 
-         txtName.Location = new Point(195, 20);
-         txtName.Margin = new Padding(4, 5, 4, 5);
+         txtName.Location = new(195, 20);
+         txtName.Margin = new(4, 5, 4, 5);
          txtName.Name = "txtName";
-         txtName.Size = new Size(448, 33);
+         txtName.Size = new(448, 33);
          txtName.TabIndex = 0;
          // 
          // lblName
          // 
          lblName.AutoSize = true;
-         lblName.Location = new Point(31, 25);
-         lblName.Margin = new Padding(4, 0, 4, 0);
+         lblName.Location = new(31, 25);
+         lblName.Margin = new(4, 0, 4, 0);
          lblName.Name = "lblName";
-         lblName.Size = new Size(155, 26);
+         lblName.Size = new(155, 26);
          lblName.Text = "Tên công trình:";
          // 
          // dgvConstruction
@@ -205,12 +206,12 @@ namespace ConstructionWork
          dgvConstruction.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
          dgvConstruction.BackgroundColor = Color.White;
          dgvConstruction.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-         dgvConstruction.Columns.AddRange(new DataGridViewColumn[] { dataGridViewColumnSTT, dataGridViewColumnName, dataGridViewColumnLocation, dataGridViewColumnYear });
-         dgvConstruction.Location = new Point(31, 275);
-         dgvConstruction.Margin = new Padding(4, 5, 4, 5);
+         dgvConstruction.Columns.AddRange([dataGridViewColumnSTT, dataGridViewColumnName, dataGridViewColumnLocation, dataGridViewColumnYear, dataGridViewColumnID, dataGridViewColumnCheckBox]);
+         dgvConstruction.Location = new(31, 275);
+         dgvConstruction.Margin = new(4, 5, 4, 5);
          dgvConstruction.Name = "dgvConstruction";
          dgvConstruction.ReadOnly = true;
-         dgvConstruction.Size = new Size(1163, 449);
+         dgvConstruction.Size = new(1163, 449);
          // 
          // dataGridViewColumnSTT
          // 
@@ -225,7 +226,7 @@ namespace ConstructionWork
          dataGridViewColumnName.HeaderText = "Tên công trình";
          dataGridViewColumnName.Name = "dataGridViewColumnName";
          dataGridViewColumnName.ReadOnly = true;
-         dataGridViewColumnName.MinimumWidth = 415;
+         dataGridViewColumnName.MinimumWidth = 405;
          // 
          // dataGridViewColumnYear
          // 
@@ -240,20 +241,43 @@ namespace ConstructionWork
          dataGridViewColumnLocation.HeaderText = "Địa điểm";
          dataGridViewColumnLocation.Name = "dataGridViewColumnLocation";
          dataGridViewColumnLocation.ReadOnly = true;
-         dataGridViewColumnLocation.MinimumWidth = 415;
+         dataGridViewColumnLocation.MinimumWidth = 405;
+         //
+         // dataGridViewColumnID
+         //
+         dataGridViewColumnID.Name = "dataGridViewColumnID";
+         dataGridViewColumnID.ReadOnly = true;
+         dataGridViewColumnID.Visible = false;
+         //
+         // dataGridViewColumnCheckBox
+         //
+         dataGridViewColumnCheckBox.HeaderText = "✅";
+         dataGridViewColumnCheckBox.Name = "dataGridViewColumnCheckBox";
+         dataGridViewColumnCheckBox.ReadOnly = false;
+         dataGridViewColumnCheckBox.Visible = false;
+         dataGridViewColumnCheckBox.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+
+         //
+
          // Giữ lại các cột đã định nghĩa
          dgvConstruction.AutoGenerateColumns = false;
          dgvConstruction.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+         dgvConstruction.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+         dgvConstruction.DefaultCellStyle.SelectionBackColor = Color.AntiqueWhite;
+         dgvConstruction.DefaultCellStyle.SelectionForeColor = Color.Black;
 
          // Ánh xạ các cột đã định nghĩa với dữ liệu
          dataGridViewColumnSTT.DataPropertyName = "STT";
          dataGridViewColumnName.DataPropertyName = "Name";
          dataGridViewColumnYear.DataPropertyName = "Year";
          dataGridViewColumnLocation.DataPropertyName = "Location";
+         dataGridViewColumnID.DataPropertyName = "ID";
+         dataGridViewColumnCheckBox.DataPropertyName = "";
 
          // Căn giữa tiêu đề các cột
          dgvConstruction.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-         
+
          // 
          // panelFilter
          // 
@@ -263,35 +287,35 @@ namespace ConstructionWork
          panelFilter.Controls.Add(txtFilterYear);
          panelFilter.Controls.Add(txtFilterLocation);
          panelFilter.Controls.Add(pictureBoxRemoveFilter);
-         panelFilter.Location = new Point(31, 230);
+         panelFilter.Location = new(31, 230);
          panelFilter.Name = "panelFilter";
-         panelFilter.Size = new Size(1163, 45);
+         panelFilter.Size = new(1163, 45);
          // 
          // txtFilterName
          // 
-         txtFilterName.Font = new Font("Times New Roman", 13.2000008F);
-         txtFilterName.Location = new Point(130, 5);
+         txtFilterName.Font = new("Times New Roman", 13.2000008F);
+         txtFilterName.Location = new(130, 5);
          txtFilterName.Name = "txtFilterName";
          txtFilterName.PlaceholderText = "Tìm theo tên công trình...";
-         txtFilterName.Size = new Size(415, 33);
+         txtFilterName.Size = new(405, 33);
          txtFilterName.TabIndex = 7;
          // 
          // txtFilterYear
          // 
-         txtFilterYear.Font = new Font("Times New Roman", 13.2000008F);
-         txtFilterYear.Location = new Point(962, 5);
+         txtFilterYear.Font = new("Times New Roman", 13.2000008F);
+         txtFilterYear.Location = new(943, 5);
          txtFilterYear.Name = "txtFilterYear";
          txtFilterYear.PlaceholderText = "Tìm theo năm...";
-         txtFilterYear.Size = new Size(175, 33);
+         txtFilterYear.Size = new(175, 33);
          txtFilterYear.TabIndex = 9;
          // 
          // txtFilterLocation
          // 
-         txtFilterLocation.Font = new Font("Times New Roman", 13.2000008F);
-         txtFilterLocation.Location = new Point(546, 5);
+         txtFilterLocation.Font = new("Times New Roman", 13.2000008F);
+         txtFilterLocation.Location = new(536, 5);
          txtFilterLocation.Name = "txtFilterLocation";
          txtFilterLocation.PlaceholderText = "Tìm theo địa điểm...";
-         txtFilterLocation.Size = new Size(415, 33);
+         txtFilterLocation.Size = new(405, 33);
          txtFilterLocation.TabIndex = 8;
          // 
          // pictureBoxRemoveFilter
@@ -299,15 +323,15 @@ namespace ConstructionWork
          pictureBoxRemoveFilter.BackColor = Color.Transparent;
          pictureBoxRemoveFilter.Cursor = Cursors.Hand;
          pictureBoxRemoveFilter.Image = Properties.Resources.images;
-         pictureBoxRemoveFilter.Location = new Point(0, 5);
+         pictureBoxRemoveFilter.Location = new(0, 5);
          pictureBoxRemoveFilter.Name = "pictureBoxRemoveFilter";
-         pictureBoxRemoveFilter.Size = new Size(33, 33);
+         pictureBoxRemoveFilter.Size = new(33, 33);
          pictureBoxRemoveFilter.SizeMode = PictureBoxSizeMode.StretchImage;
          pictureBoxRemoveFilter.TabIndex = 10;
          pictureBoxRemoveFilter.TabStop = false;
          toolTip.SetToolTip(pictureBoxRemoveFilter, "Xóa tất cả bộ lọc");
-         
-         
+
+
          // 
          // ConstructionUserControl
          // 
@@ -327,10 +351,10 @@ namespace ConstructionWork
          Controls.Add(dgvConstruction);
          Controls.Add(btnRefresh);
          Controls.Add(panelFilter);
-         Font = new Font("Times New Roman", 13.2000008F, FontStyle.Regular, GraphicsUnit.Point, 0);
-         Margin = new Padding(4, 5, 4, 5);
+         Font = new("Times New Roman", 13.2000008F, FontStyle.Regular, GraphicsUnit.Point, 0);
+         Margin = new(4, 5, 4, 5);
          Name = "ConstructionUserControl";
-         Size = new Size(1228, 780);
+         Size = new(1228, 780);
          ((System.ComponentModel.ISupportInitialize)dgvConstruction).EndInit();
          panelFilter.ResumeLayout(false);
          panelFilter.PerformLayout();
@@ -343,16 +367,16 @@ namespace ConstructionWork
 
       #region Event Handlers
 
-      private void btnAdd_Click(object? sender, EventArgs e)
+      private bool CheckNameLocationNotEmpty()
       {
          // Kiểm tra tên công trình không được bỏ trống
          if (string.IsNullOrWhiteSpace(txtName.Text))
          {
             lblMessage.Text = "Vui lòng nhập tên công trình!";
             lblMessage.ForeColor = Color.Red;
-            TimeIntervalMessage(5000);
+            TimeIntervalMessage();
             txtName.Focus();
-            return;
+            return true;
          }
 
          // Kiểm tra địa điểm không được bỏ trống
@@ -360,12 +384,15 @@ namespace ConstructionWork
          {
             lblMessage.Text = "Vui lòng nhập địa điểm!";
             lblMessage.ForeColor = Color.Red;
-            TimeIntervalMessage(5000);
+            TimeIntervalMessage();
             txtLocation.Focus();
-            return;
+            return true;
          }
-
-         // Nếu tất cả đều hợp lệ, tiến hành thêm công trình
+         return false;
+      }
+      private void btnAdd_Click(object? sender, EventArgs e)
+      {
+         if (CheckNameLocationNotEmpty()) return;
          try
          {
             // Lấy kết nối từ DatabaseHelper
@@ -385,7 +412,7 @@ namespace ConstructionWork
             // Hiển thị thông báo thành công
             lblMessage.Text = "Đã thêm công trình thành công!";
             lblMessage.ForeColor = Color.Green;
-            TimeIntervalMessage(5000);
+            TimeIntervalMessage();
 
             // Làm mới các trường nhập liệu
             txtName.Clear();
@@ -400,7 +427,7 @@ namespace ConstructionWork
          {
             lblMessage.Text = $"Lỗi: {ex.Message}";
             lblMessage.ForeColor = Color.Red;
-            TimeIntervalMessage(5000);
+            TimeIntervalMessage();
          }
       }
       private DataTable? constructionData; // Khai báo ở cấp class để sử dụng trong các phương thức
@@ -411,7 +438,7 @@ namespace ConstructionWork
          {
             using SqlConnection connection = DatabaseHelper.GetConnection();
             connection.Open();
-            string query = "select Name, Location, trim(str(Year)) as Year from CongTrinh order by Name";
+            string query = "select Name, Location, Year, ID from CongTrinh order by Name";
 
             using SqlCommand command = new(query, connection);
 
@@ -419,7 +446,7 @@ namespace ConstructionWork
             SqlDataAdapter adapter = new(command);
 
             // Tạo DataTable để lưu trữ dữ liệu
-            constructionData = new DataTable();
+            constructionData = new();
 
             // Đổ dữ liệu vào DataTable
             adapter.Fill(constructionData);
@@ -427,12 +454,13 @@ namespace ConstructionWork
             // Thêm cột STT
             if (!constructionData.Columns.Contains("STT"))
             {
-               DataColumn sttColumn = new DataColumn("STT", typeof(int));
+               DataColumn sttColumn = new("STT", typeof(int));
                constructionData.Columns.Add(sttColumn);
             }
 
             // Đánh số STT
-            for (int i = 0; i < constructionData.Rows.Count; i++)
+            int rowNumber = constructionData.Rows.Count;
+            for (int i = 0; i < rowNumber; i++)
                constructionData.Rows[i]["STT"] = i + 1;
 
             // Sắp xếp lại thứ tự cột
@@ -440,16 +468,14 @@ namespace ConstructionWork
                constructionData.Columns?["STT"]?.SetOrdinal(0);
             // Gán DataSource
             dgvConstruction.DataSource = constructionData;
-
-
-
          }
          catch (Exception ex)
          {
             lblMessage.Text = $"Lỗi khi tải dữ liệu: {ex.Message}";
             lblMessage.ForeColor = Color.Red;
-            TimeIntervalMessage(5000);
+            TimeIntervalMessage();
          }
+
       }
 
       private void ApplyFilter()
@@ -495,10 +521,7 @@ namespace ConstructionWork
          }
       }
 
-      private void TxtFilter_TextChanged(object? sender, EventArgs e)
-      {
-         ApplyFilter();
-      }
+      private void TxtFilter_TextChanged(object? sender, EventArgs e) => ApplyFilter();
 
       // Xóa nội dung của tất cả các ô tìm kiếm
       private void pictureBoxRemoveFilter_Click(object? sender, EventArgs e)
@@ -519,6 +542,7 @@ namespace ConstructionWork
          pictureBoxRemoveFilter.Click += pictureBoxRemoveFilter_Click;
          btnRefresh.Click += btnRefresh_Click;
          btnAdd.Click += btnAdd_Click;
+         btnEdit.Click += btnEdit_Click;
          Load += ConstructionUserControl_Load;
 
          // Thêm sự kiện TextChanged cho các ô tìm kiếm
@@ -526,11 +550,17 @@ namespace ConstructionWork
          txtFilterYear.TextChanged += TxtFilter_TextChanged;
          txtFilterLocation.TextChanged += TxtFilter_TextChanged;
          // Đăng ký sự kiện KeyDown cho các TextBox
-         txtName.KeyDown += TextBox_KeyDown;
+         /* txtName.KeyDown += TextBox_KeyDown;
          txtLocation.KeyDown += TextBox_KeyDown;
-         txtYear.KeyDown += TextBox_KeyDown;
+         txtYear.KeyDown += TextBox_KeyDown; */
+         dgvConstruction.CellClick += DgvConstruction_CellClick;
+         dgvConstruction.DataBindingComplete += DgvConstruction_DataBindingComplete;
+         dgvConstruction.Sorted += DgvConstruction_Sorted;
+         btnDelete.Click += btnDelete_Click;
+         dgvConstruction.CellContentClick += DgvConstruction_CellContentClick;
+         dgvConstruction.SelectionChanged += DgvConstruction_SelectionChanged;
       }
-      private void TextBox_KeyDown(object? sender, KeyEventArgs e)
+      /* private void TextBox_KeyDown(object? sender, KeyEventArgs e)
       {
          // Kiểm tra nếu phím Enter được nhấn
          if (e.KeyCode == Keys.Enter)
@@ -541,12 +571,12 @@ namespace ConstructionWork
             // Kích hoạt sự kiện Click của nút Thêm
             btnAdd.PerformClick();
          }
-      }
-      public void TimeIntervalMessage(short milisecond = 3000)
+      } */
+      public void TimeIntervalMessage()
       {
          System.Windows.Forms.Timer timer = new()
          {
-            Interval = milisecond,
+            Interval = 7000,
          };
          timer.Tick += (s, args) =>
             {
@@ -571,7 +601,7 @@ namespace ConstructionWork
             lblMessage.ForeColor = Color.Red;
 
             // Tự động ẩn thông báo sau 3 giây
-            TimeIntervalMessage(5000);
+            TimeIntervalMessage();
          }
       }
 
@@ -583,17 +613,344 @@ namespace ConstructionWork
          txtLocation.Clear();
 
          txtName.Focus(); // Đặt focus vào ô nhập tên công trình
-
-         // Hiển thị thông báo làm mới thành công (tùy chọn)
-         lblMessage.Text = "Đã làm mới các trường dữ liệu!";
-         lblMessage.ForeColor = Color.Green;
-
-         TimeIntervalMessage();
       }
 
-      private void ConstructionUserControl_Load(object? sender, EventArgs e)
+      private void ConstructionUserControl_Load(object? sender, EventArgs e) => LoadConstructionData();
+
+      private int constructionID = -1;
+      private void DgvConstruction_CellClick(object? sender, DataGridViewCellEventArgs e)
       {
+         // Kiểm tra xem người dùng có nhấp vào tiêu đề cột không
+         if (e.RowIndex < 0)
+            return;
+
+         try
+         {
+            // Lấy dữ liệu từ dòng được chọn
+            DataGridViewRow row = dgvConstruction.Rows[e.RowIndex];
+
+            // Hiển thị dữ liệu vào các ô nhập tương ứng
+            txtName.Text = row.Cells["dataGridViewColumnName"].Value.ToString();
+            txtLocation.Text = row.Cells["dataGridViewColumnLocation"].Value.ToString();
+            txtYear.Text = row.Cells["dataGridViewColumnYear"].Value?.ToString() ?? string.Empty;
+            constructionID = Convert.ToInt32(row.Cells["dataGridViewColumnID"].Value); // Lưu ID công trình để sử dụng cho việc sửa hoặc xóa
+            txtName.Focus(); // Đặt focus vào ô nhập tên công trình
+
+         }
+         catch (Exception ex)
+         {
+            lblMessage.Text = $"Lỗi khi lấy dữ liệu: {ex.Message}";
+            lblMessage.ForeColor = Color.Red;
+            TimeIntervalMessage();
+         }
+      }
+      private void SelectRowById()
+      {
+         if (constructionID < 0 || dgvConstruction.Rows.Count == 0)
+            return;
+
+         foreach (DataGridViewRow row in dgvConstruction.Rows)
+         {
+            if (Convert.ToInt32(row.Cells["dataGridViewColumnID"].Value) == constructionID)
+            {
+               // Chọn dòng
+               dgvConstruction.ClearSelection();
+               row.Selected = true;
+               dgvConstruction.CurrentCell = row.Cells[0];
+
+               // Cuộn đến dòng được chọn để đảm bảo nó hiển thị
+               dgvConstruction.FirstDisplayedScrollingRowIndex = row.Index;
+               break;
+            }
+         }
+      }
+
+      private void btnEdit_Click(object? sender, EventArgs e)
+      {
+         if (dgvConstruction.RowCount == 0)
+         {
+            lblMessage.Text = "Không có công trình nào để sửa!";
+            lblMessage.ForeColor = Color.Red;
+            TimeIntervalMessage();
+            return;
+         }
+         // Kiểm tra xem đã chọn công trình nào chưa
+         if (constructionID == -1)
+         {
+            lblMessage.Text = "Chọn một công trình để sửa!";
+            lblMessage.ForeColor = Color.Red;
+            TimeIntervalMessage();
+            return;
+         }
+
+         if (CheckNameLocationNotEmpty()) return;
+         try
+         {
+
+            // Cập nhật dữ liệu vào database
+            using SqlConnection connection = DatabaseHelper.GetConnection();
+            connection.Open();
+
+            string query = "update CongTrinh set Name = @Name, Location = @Location, Year = @Year where ID = @ID";
+
+            using SqlCommand command = new(query, connection);
+
+            // Thêm các tham số
+            command.Parameters.AddWithValue("@Name", txtName.Text);
+            command.Parameters.AddWithValue("@Location", txtLocation.Text);
+            command.Parameters.AddWithValue("@Year", string.IsNullOrEmpty(txtYear.Text) ? DBNull.Value : Convert.ToInt32(txtYear.Text));
+            command.Parameters.AddWithValue("@ID", constructionID);
+
+            // Thực thi câu lệnh
+            int rowsAffected = command.ExecuteNonQuery();
+
+            if (rowsAffected > 0)
+            {
+               lblMessage.Text = "Cập nhật công trình thành công!";
+               lblMessage.ForeColor = Color.Green;
+               TimeIntervalMessage();
+
+               txtName.Clear();
+               txtYear.Clear();
+               txtLocation.Clear();
+               constructionID = -1; // Đặt lại ID công trình sau khi cập nhật
+               this.ActiveControl = null;
+
+               LoadConstructionData();
+               SelectRowById();
+            }
+            else
+            {
+               lblMessage.Text = "Không thể cập nhật công trình. Vui lòng thử lại!";
+               lblMessage.ForeColor = Color.Red;
+               TimeIntervalMessage();
+            }
+         }
+         catch (Exception ex)
+         {
+            lblMessage.Text = $"Lỗi: {ex.Message}";
+            lblMessage.ForeColor = Color.Red;
+            TimeIntervalMessage();
+         }
+
+      }
+      private void DgvConstruction_DataBindingComplete(object? sender, DataGridViewBindingCompleteEventArgs e)
+      {
+         // Đảm bảo không có dòng nào được chọn sau khi binding dữ liệu
+         dgvConstruction.ClearSelection();
+         if (dgvConstruction.Rows.Count > 0)
+            dgvConstruction.CurrentCell = null;
+      }
+      private void DgvConstruction_Sorted(object? sender, EventArgs e)
+      {
+         // Xóa lựa chọn sau khi sắp xếp
+         dgvConstruction.ClearSelection();
+
+         // Đặt CurrentCell thành null để không có ô nào được chọn
+         if (dgvConstruction.Rows.Count > 0)
+         {
+            dgvConstruction.CurrentCell = null;
+         }
+      }
+
+      private bool isDelete = false;
+      private void btnDelete_Click(object? sender, EventArgs e)
+      {
+         if (!isDelete)
+         {
+            // Chuyển sang chế độ xóa
+            isDelete = true;
+
+            // Hiển thị cột checkbox
+            dataGridViewColumnCheckBox.Visible = true;
+
+            // Đổi tên nút thành "Hủy xóa"
+            btnDelete.Text = "Hủy xóa";
+            btnAdd.Click -= btnAdd_Click;
+            btnEdit.Click -= btnEdit_Click;
+            dgvConstruction.CellClick -= DgvConstruction_CellClick;
+
+         }
+         else
+         {
+            // Kiểm tra xem có dòng nào được chọn không
+            bool hasCheckedRows = false;
+            foreach (DataGridViewRow row in dgvConstruction.Rows)
+            {
+               if (row.Cells["dataGridViewColumnCheckBox"].Value != null &&
+                   Convert.ToBoolean(row.Cells["dataGridViewColumnCheckBox"].Value))
+               {
+                  hasCheckedRows = true;
+                  break;
+               }
+            }
+
+            if (hasCheckedRows)
+            {
+               // Nếu có dòng được chọn và nút đang hiển thị "Hủy xóa"
+               if (btnDelete.Text == "Hủy xóa")
+                  // Đổi tên nút thành "Xác nhận xóa"
+                  btnDelete.Text = "Xác nhận xóa";
+               else if (btnDelete.Text == "Xác nhận xóa")
+               {
+                  // Thực hiện xóa các dòng đã chọn
+                  DeleteSelectedRows();
+
+                  // Trở về trạng thái ban đầu
+                  ResetDeleteMode();
+               }
+            }
+            else
+               // Không có dòng nào được chọn, trở về trạng thái ban đầu
+               ResetDeleteMode();
+         }
+      }
+      private void DeleteSelectedRows()
+      {
+         try
+         {
+            // Hiển thị hộp thoại xác nhận
+            DialogResult result = MessageBox.Show(
+                "Bạn có chắc chắn muốn xóa các công trình đã chọn?",
+                "Xác nhận xóa",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+               using SqlConnection connection = DatabaseHelper.GetConnection();
+               connection.Open();
+
+               // Tạo danh sách các ID cần xóa
+               List<int> idsToDelete = [];
+               foreach (DataGridViewRow row in dgvConstruction.Rows)
+               {
+                  if (row.Cells["dataGridViewColumnCheckBox"].Value != null &&
+                      Convert.ToBoolean(row.Cells["dataGridViewColumnCheckBox"].Value))
+                  {
+                     int id = Convert.ToInt32(row.Cells["dataGridViewColumnID"].Value);
+                     idsToDelete.Add(id);
+                  }
+               }
+
+               // Xóa từng công trình
+               int deletedCount = 0;
+               foreach (int id in idsToDelete)
+               {
+                  string query = "delete from CongTrinh where ID = @ID";
+                  using SqlCommand command = new(query, connection);
+                  command.Parameters.AddWithValue("@ID", id);
+                  deletedCount += command.ExecuteNonQuery();
+               }
+
+               // Hiển thị thông báo thành công
+               lblMessage.Text = $"Đã xóa {deletedCount} công trình thành công!";
+               lblMessage.ForeColor = Color.Green;
+               TimeIntervalMessage();
+
+
+            }
+         }
+         catch (Exception ex)
+         {
+            lblMessage.Text = $"Lỗi: {ex.Message}";
+            lblMessage.ForeColor = Color.Red;
+            TimeIntervalMessage();
+         }
+      }
+      private void ResetDeleteMode()
+      {
+         // Ẩn cột checkbox
+         dataGridViewColumnCheckBox.Visible = false;
+
+         // Đổi tên nút trở lại thành Xóa
+         btnDelete.Text = "Xóa";
+
+         // Đặt lại trạng thái
+         isDelete = false;
+         btnAdd.Click += btnAdd_Click;
+         btnEdit.Click += btnEdit_Click;
+         dgvConstruction.CellClick += DgvConstruction_CellClick;
+         txtName.Focus(); // Đặt focus vào ô nhập tên công trình
+
+         // Làm mới datagridview để xóa các lựa chọn
          LoadConstructionData();
+      }
+      private void DgvConstruction_CellContentClick(object? sender, DataGridViewCellEventArgs e)
+      {
+         // Kiểm tra xem người dùng có nhấp vào cột checkbox không
+         if (e.ColumnIndex == dataGridViewColumnCheckBox.Index && e.RowIndex >= 0)
+         {
+            // Đảo ngược giá trị của ô checkbox
+            bool currentValue = false;
+            if (dgvConstruction.Rows[e.RowIndex].Cells["dataGridViewColumnCheckBox"].Value != null)
+               currentValue = Convert.ToBoolean(dgvConstruction.Rows[e.RowIndex].Cells["dataGridViewColumnCheckBox"].Value);
+            dgvConstruction.Rows[e.RowIndex].Cells["dataGridViewColumnCheckBox"].Value = !currentValue;
+
+            // Kiểm tra xem có dòng nào được chọn không
+            bool hasCheckedRows = false;
+            foreach (DataGridViewRow row in dgvConstruction.Rows)
+            {
+               if (row.Cells["dataGridViewColumnCheckBox"].Value != null &&
+                   Convert.ToBoolean(row.Cells["dataGridViewColumnCheckBox"].Value))
+               {
+                  hasCheckedRows = true;
+                  break;
+               }
+            }
+
+            // Nếu có dòng được chọn và nút đang hiển thị "Hủy xóa"
+            if (hasCheckedRows && btnDelete.Text == "Hủy xóa")
+               // Đổi tên nút thành "Xác nhận xóa"
+               btnDelete.Text = "Xác nhận xóa";
+            else if (!hasCheckedRows && btnDelete.Text == "Xác nhận xóa")
+            {
+               // Không còn dòng nào được chọn, đổi tên nút trở lại thành "Hủy xóa"
+               btnDelete.Text = "Hủy xóa";
+            }
+         }
+
+         // Kiểm tra xem người dùng có nhấp vào header của cột checkbox không
+         if (e.RowIndex == -1 && e.ColumnIndex == dataGridViewColumnCheckBox.Index)
+         {
+            // Kiểm tra xem có dòng nào đã được chọn chưa
+            bool anyChecked = false;
+            foreach (DataGridViewRow row in dgvConstruction.Rows)
+            {
+               if (row.Cells["dataGridViewColumnCheckBox"].Value != null &&
+                   Convert.ToBoolean(row.Cells["dataGridViewColumnCheckBox"].Value))
+               {
+                  anyChecked = true;
+                  break;
+               }
+            }
+
+            // Chọn hoặc bỏ chọn tất cả các dòng
+            bool checkValue = !anyChecked;
+            foreach (DataGridViewRow row in dgvConstruction.Rows)
+            {
+               row.Cells["dataGridViewColumnCheckBox"].Value = checkValue;
+            }
+
+            // Cập nhật tên nút
+            if (checkValue)
+            {
+               btnDelete.Text = "Xác nhận xóa";
+            }
+            else
+            {
+               btnDelete.Text = "Hủy xóa";
+            }
+         }
+      }
+      private void DgvConstruction_SelectionChanged(object? sender, EventArgs e)
+      {
+         // Nếu cột checkbox đang hiển thị (đang ở chế độ xóa), không cho phép chọn dòng
+         if (dataGridViewColumnCheckBox.Visible)
+         {
+            dgvConstruction.ClearSelection();
+            // dgvConstruction.CurrentCell = null;
+         }
       }
    }
 }
