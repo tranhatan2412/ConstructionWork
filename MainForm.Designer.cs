@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -6,7 +6,7 @@ namespace ConstructionWork
 {
     partial class MainForm
     {
-        private System.ComponentModel.IContainer components = null;
+        private System.ComponentModel.Container components = null;
         private TabControl tabControl;
         private TabPage tabConstruction;
         private TabPage tabEmployee;
@@ -35,13 +35,13 @@ namespace ConstructionWork
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            tabControl = new TabControl();
-            tabConstruction = new TabPage();
-            constructionControl = new ConstructionUserControl();
-            tabEmployee = new TabPage();
-            employeeControl = new EmployeeUserControl();
-            toolTip = new ToolTip(components);
+            components = new();
+            tabControl = new();
+            tabConstruction = new();
+            constructionControl = new();
+            tabEmployee = new();
+            employeeControl = new();
+            toolTip = new(components);
             tabControl.SuspendLayout();
             tabConstruction.SuspendLayout();
             tabEmployee.SuspendLayout();
@@ -51,21 +51,21 @@ namespace ConstructionWork
             // 
             tabControl.Controls.Add(tabConstruction);
             tabControl.Controls.Add(tabEmployee);
-            tabControl.Location = new Point(17, 15);
-            tabControl.Margin = new Padding(4, 5, 4, 5);
+            tabControl.Location = new(17, 15);
+            tabControl.Margin = new(4, 5, 4, 5);
             tabControl.Name = "tabControl";
             tabControl.SelectedIndex = 0;
-            tabControl.Size = new Size(1236, 818);
+            tabControl.Size = new(1236, 818);
             tabControl.TabIndex = 0;
             // 
             // tabConstruction
             // 
             tabConstruction.Controls.Add(constructionControl);
-            tabConstruction.Location = new Point(4, 34);
-            tabConstruction.Margin = new Padding(4, 5, 4, 5);
+            tabConstruction.Location = new(4, 34);
+            tabConstruction.Margin = new(4, 5, 4, 5);
             tabConstruction.Name = "tabConstruction";
-            tabConstruction.Padding = new Padding(4, 5, 4, 5);
-            tabConstruction.Size = new Size(1228, 780);
+            tabConstruction.Padding = new(4, 5, 4, 5);
+            tabConstruction.Size = new(1228, 780);
             tabConstruction.TabIndex = 0;
             tabConstruction.Text = "Công trình";
             tabConstruction.UseVisualStyleBackColor = true;
@@ -73,43 +73,43 @@ namespace ConstructionWork
             // constructionControl
             // 
             constructionControl.Dock = DockStyle.Fill;
-            constructionControl.Font = new Font("Times New Roman", 13.2000008F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            constructionControl.Location = new Point(4, 5);
-            constructionControl.Margin = new Padding(4, 5, 4, 5);
+            constructionControl.Font = new("Times New Roman", 13.2000008F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            constructionControl.Location = new(4, 5);
+            constructionControl.Margin = new(4, 5, 4, 5);
             constructionControl.Name = "constructionControl";
-            constructionControl.Size = new Size(1220, 770);
+            constructionControl.Size = new(1220, 770);
             constructionControl.TabIndex = 0;
             // 
             // tabEmployee
             // 
             tabEmployee.Controls.Add(employeeControl);
-            tabEmployee.Location = new Point(4, 34);
-            tabEmployee.Margin = new Padding(4, 5, 4, 5);
+            tabEmployee.Location = new(4, 34);
+            tabEmployee.Margin = new(4, 5, 4, 5);
             tabEmployee.Name = "tabEmployee";
-            tabEmployee.Padding = new Padding(4, 5, 4, 5);
-            tabEmployee.Size = new Size(1228, 780);
+            tabEmployee.Padding = new(4, 5, 4, 5);
+            tabEmployee.Size = new(1228, 780);
             tabEmployee.TabIndex = 1;
-            tabEmployee.Text = "Nhân viên";
+            tabEmployee.Text = "Nhân công";
             tabEmployee.UseVisualStyleBackColor = true;
             // 
             // employeeControl
             // 
             employeeControl.Dock = DockStyle.Fill;
-            employeeControl.Font = new Font("Times New Roman", 13.2000008F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            employeeControl.Location = new Point(4, 5);
-            employeeControl.Margin = new Padding(4, 5, 4, 5);
+            employeeControl.Font = new("Times New Roman", 13.2000008F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            employeeControl.Location = new(4, 5);
+            employeeControl.Margin = new(4, 5, 4, 5);
             employeeControl.Name = "employeeControl";
-            employeeControl.Size = new Size(1220, 770);
+            employeeControl.Size = new(1220, 770);
             employeeControl.TabIndex = 0;
             // 
             // MainForm
             // 
-            AutoScaleDimensions = new SizeF(12F, 25F);
+            AutoScaleDimensions = new(12F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1277, 848);
+            ClientSize = new(1277, 848);
             Controls.Add(tabControl);
-            Font = new Font("Times New Roman", 13.2000008F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Margin = new Padding(4, 5, 4, 5);
+            Font = new("Times New Roman", 13.2000008F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Margin = new(4, 5, 4, 5);
             MaximizeBox = false;
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
