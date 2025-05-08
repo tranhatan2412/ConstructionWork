@@ -440,7 +440,7 @@ namespace ConstructionWork
          {
             using SqlConnection connection = DatabaseHelper.GetConnection();
             connection.Open();
-            string query = "select Name, Location, Year, ID from CongTrinh order by Name";
+            string query = "select Name, Location, trim(str(Year)) as Year, ID from CongTrinh order by Name";
 
             using SqlCommand command = new(query, connection);
 
